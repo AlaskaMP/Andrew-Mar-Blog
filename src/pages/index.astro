@@ -1,18 +1,146 @@
 ---
-
+import Layout from "../Layout/Layout.astro";
+import Cart from "../components/Cart.astro"
+import {information} from "../data/information"
 ---
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Thoughts</a>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Andrew Mar's Blog</h1>
-	</body>
-</html>
+<Layout>
+	<header class="Header">
+		<strong> Andrew MP</strong>
+	</header>
+	<main class="Main">
+		<article class="Inicio">
+			<section>
+				<h1 class="name-title">
+					Andrew <br>Mar 
+				</h1>
+				<p class="description">
+					Hola, soy un desarrollador Frontend con experiencia en la creación de intefaces de usuario
+					utlizando principalmente React.Mi enfoque es transformar las ideas creativas en experiencias 
+					digitales atractivas y funcionales.
+				</p>
+			</section>
+			<section>
+				<img class="Avatar" src="./public/Avatar.png"/>
+				<div class="SocialMedia">
+					<button class="button-Media">						
+						LinkedIn
+					</button>
+					{'/'}
+					<button class="button-Media">
+						GitHub
+					</button>
+				</div>
+			</section>
+		</article>
+		<section>
+			<h2 class="proyectos">Proyectos</h2>
+			{information.map((el)=>{
+				return(
+					<Cart title={el.title} description={el.description} link={el.link} img={el.img}/>
+				)
+			})}
+		</section>
+	</main>
+	<footer class="Footer">
+		Contactame Aquí: <strong>alexandermarportal@gmail.com</strong>
+	</footer>
+</Layout>
+<style is:global>
+	body{
+		margin-top: 1rem;
+		margin-left: 2.5rem;
+		margin-right: 2.5rem;
+		display: grid;
+		min-height: 100%;
+		grid-template-areas: 
+		"Header"
+		"Main"
+		"Footer"
+		;
+		color: rgb(192, 192, 192);
+		background-color: rgb(0, 0, 0);
+		grid-template-rows: 80px 1fr 150px;
+	}	
+	.proyectos{
+		color: white;
+		font-size: 30px;
+	}
+	html{
+		height: 100%;
+		font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+	}
+	.name-title{
+		color: white;
+	}
+	.Header{
+		grid-area: Header;
+		display: flex;
+		align-items: center;
+		gap:80%;
+	}
+	.Main{
+		grid-area: Main;
+		margin: 0;
+	}
+	.navBar-button{
+		font-size: bold;
+	}
+	.Inicio{
+		display: flex;
+		gap: 4rem;
+	}
+	.Main p{
+		font-size: 1.5rem;
+	}
+	.Avatar{
+		height: 400px;
+		width: auto;
+	}
+	.Footer{
+		grid-area: Footer;
+	}
+	button{
+		all:inherit;
+		margin: 0;
+		padding: 0;
+		background-color: transparent;
+		color: inherit;
+		border: none;
+		cursor: pointer;
+		font-family: inherit;
+	}
+	nav{
+		display: flex;
+		gap: 1rem;
+	}
+	.Main{
+		display: flex;
+		flex-direction: column;
+	}
+	.Main h1{
+		font-size: 8rem;
+		margin: 0;
+	}
+	.SocialMedia{
+		margin-top: 2rem;
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		justify-content: center;
+		
+	}
+	.button-Media{
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		
+	}
+	.button-Media:hover{
+		scale: 1.2;
+		font-weight: bold;
+	}
+	.description{
+		font-size: 80px;
+	}
+	
+</style>

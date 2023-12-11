@@ -1,0 +1,60 @@
+---
+const {description,link,title,img}=Astro.props
+---
+<main>
+    <section>
+        <div class="text">
+            <h2>{title}</h2>
+            <p>
+                {description}
+            </p>
+        </div>
+        <div class="imgLink">
+            <img src={img}/>
+            <a href={link}>
+                Repositorio
+            </a>
+        </div>
+    </section>
+</main>
+
+<style>
+    
+    section{
+        margin-left: 1rem;
+        display: flex;
+        margin: 4rem;
+        width: 1000px;
+        height: 500px;
+        border: 0.5px solid rgb(40,40,40);
+        border-radius: 20px;
+        background-color: rgb(11,11,11);
+        align-items: center;
+    }
+    section:hover{
+        scale: 1.1;
+    }
+    img{
+        width: 400px;
+        height: auto;
+        border-radius: 10px;
+        margin: 2rem;
+    }
+    .text{
+        margin: 2rem;
+    }
+    h2{
+        color: white;
+        font-weight: 800;
+    }
+    .imgLink{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+</style>
